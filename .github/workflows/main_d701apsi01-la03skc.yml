@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'd701apsi01-la03skc'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7F81B9E9E02240DAAA70C92C90FE8887 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2180F26209644B0C90CCB606F295AF82 }}
