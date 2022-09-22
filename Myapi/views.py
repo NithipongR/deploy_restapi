@@ -1,10 +1,23 @@
 from django.shortcuts import render
+from .serializers import TaskSerializers
+from .models import testRequest
+from rest_framework import generics, permissions
 from django.conf import settings
 import requests
 from django.shortcuts import redirect
 import json
 
 ms_identity_web = settings.MS_IDENTITY_WEB
+
+class TaskList(generics.ListAPIView):
+    queryset = testRequest.objects.all()
+    serializer_class = TaskSerializers
+    permission_classes = [permissions.IsAuthenticated]
+
+class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = testRequest.objects.all()
+    serializer_class = TaskSerializers
+    permission_classes = [permissions.IsAuthenticated]
 
 def index(request):
     if request.identity_context_data.authenticated:
