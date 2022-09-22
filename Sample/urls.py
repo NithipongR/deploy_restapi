@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path, include, re_path
 from django.views.static import serve
 from django.contrib import admin
-from . import views
+from Myapi import views
 from django.conf import settings
 from ms_identity_web.django.msal_views_and_urls import MsalViews
 
