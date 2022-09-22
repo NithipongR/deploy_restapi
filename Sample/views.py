@@ -1,23 +1,10 @@
 from django.shortcuts import render
-from .serializers import TaskSerializers
-from .models import testRequest
-from rest_framework import generics, permissions
 from django.conf import settings
 import requests
 from django.shortcuts import redirect
 import json
 
 ms_identity_web = settings.MS_IDENTITY_WEB
-
-class TaskList(generics.ListAPIView):
-    queryset = testRequest.objects.all()
-    serializer_class = TaskSerializers
-    permission_classes = [permissions.IsAuthenticated]
-
-class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = testRequest.objects.all()
-    serializer_class = TaskSerializers
-    permission_classes = [permissions.IsAuthenticated]
 
 def index(request):
     if request.identity_context_data.authenticated:
@@ -42,7 +29,7 @@ def index(request):
 
         # print(result['access_token'])
         # token_azure_ad = result['access_token']
-        pic_url,data = url_pic(request,"All")
+        pic_url,data = url_pic(request,"Wait")
         # data = data_request("All")
         return render(request, 'auth/inbox.html', {'pic_url' : pic_url,'all_data' : data})
 
@@ -64,8 +51,8 @@ def history(request):
 
     #     all_Request = testRequest.objects.all()
     #     status_test= all_Request.filter(docStatus__startswith='a' ) | all_Request.filter(docStatus__startswith='r' )
-        pic_url,data = url_pic(request,"All")
-        return render(request, 'auth/history.html',{'pic_url' : pic_url})
+        pic_url,data = url_pic(request,"A_C")
+        return render(request, 'auth/history.html',{'pic_url' : pic_url,'all_data' : data})
     else:
         # print('index page')
         return redirect('sign_in')
@@ -115,6 +102,14 @@ def url_pic(request,status):
         elif status.startswith("Cancel"):
             for i in result_api["data"]:
                 if i["docStatus"] == "Cancel":
+                    data_use.append(i)
+        elif status.startswith("Wait") :
+            for i in result_api["data"]:
+                if i["docStatus"] == "WaitForApprove":
+                    data_use.append(i)
+        elif status.startswith("A_C") :
+            for i in result_api["data"]:
+                if i["docStatus"] == "Complete" or  i["docStatus"] == "Cancel":
                     data_use.append(i)
     
         if result1['employeeId'] == None:

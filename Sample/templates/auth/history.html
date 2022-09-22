@@ -33,7 +33,7 @@
       <thead>
         <tr>
             <!-- <th>Detail URL</th> -->
-            <th>Document Number</th>
+            <!-- <th>Document Number</th> -->
             <th>Title</th>
             <th>System</th>
             <th>Document Status</th>
@@ -46,22 +46,22 @@
         </tr>
       </thead>
       <tbody>
-        {% for testRequest in all_Request %}
+        {% for data in all_data %}
         <tr>
           <!-- <td><a href= {{ testRequest.detailUrl }} target="_blank"><img src="/static/image/icons8-document-50.png"></a></td> -->
-          <td>{{ testRequest.docNumber }}</td>  
-          <td>{{ testRequest.title }}</td> 
-          <td>{{ testRequest.system }}</td>
-          {%if testRequest.docStatus == "approved" or testRequest.docStatus == "Approved" or testRequest.docStatus == "approve" or testRequest.docStatus == "Approve"%}:
+          <!-- <td>{{ data.docNumber }}</td>   -->
+          <td>{{ data.title }}</td> 
+          <td>{{ data.system }}</td>
+          {%if data.docStatus == "Complete" %}:
             <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td>
           {%else%}:
             <td><img src="/static/image/cancel.png" style="width: 20px; height: 20px;"></td>
           {%endif%}
-          <td>{{ testRequest.department }}</td>
-          <td>{{ testRequest.requester }}</td>
-          <td>{{ testRequest.requestDate }}</td>
-          <td>{{ testRequest.lastUpdate }}</td> 
-          {%if testRequest.attachment == True %}:
+          <td>{{ data.department }}</td>
+          <td>{{ data.requesterCode }}</td>
+          <td>{{ data.requestDate }}</td>
+          <td>{{ data.lastUpdate }}</td> 
+          {%if data.attachment == True %}:
             <!-- <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td> -->
             <td>✔</td>
           {% else %}:

@@ -117,7 +117,7 @@ body {
   margin: 7px;
 }
 .picture_header{
-  margin:3px 7px;
+  margin:3px;
   /* filter: invert(100%) !important; */
 }
 .signout-logo{
@@ -336,7 +336,7 @@ div.row{
   .menu-icons{
     margin-right: 0px;
   }
-  .menu-icons .picture_header1{
+  .menu-icons .picture_header{
     display:none;
   }
   .menu-icons .display-this{
