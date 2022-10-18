@@ -1,0 +1,64 @@
+.radio-toolbar input[type="radio"] {
+    display: none;
+  }
+  
+.radio-toolbar label {
+  display: inline-block;
+  background-color: #fff;
+  padding: 5px 20px;
+  font-size: 18px;
+  border-radius:5px 5px 5px 5px;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+  
+.radio-toolbar input[type="radio"]:checked+label {
+  background-color: #00a8ab !important;
+  color: #fff;
+  border: 1px solid #e0e0e0;
+}
+
+.radio-toolbar{
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+
+.cardChart{
+  height: 100%;
+}
+
+
+@media (min-width:700px) {
+  .barr{
+    height: 300px !important;
+  }
+  .doughtnutt{
+    height: 300px !important;
+  }
+}
+@media (min-width:1600px) {
+  .barr{
+    height: 500px !important;
+  }
+  .doughtnutt{
+    height: 500px !important;
+  }
+}
+
+@media (max-width:375px) {
+  .radio-toolbar label {
+    padding: 5px 18px;
+  }
+}
+@media (max-width:360px) {
+  .radio-toolbar label {
+    padding: 5px 16px;
+  }
+}
+@media (max-width:280px) {
+  .radio-toolbar label {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+}

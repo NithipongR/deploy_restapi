@@ -1,0 +1,171 @@
+<!Doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="main_css.css">
+    <title>Layout_BS</title>
+  </head>
+
+  <body style="background-color: #e5e5e5;">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #027779; height: 80px;">
+        <div class="container-fluid">
+            <ul class="navbar-nav ">
+            <li><img src="image/layout_img/menu-burger.png" id="menu" alt="hamburger_Logo"
+      class="hamburger-logo" width="35" height="35" style="margin-left: 5px;
+      margin-right: 20px;
+      cursor: pointer;"/></li>
+          <li><a class="navbar-brand" href="/"><img src="image/layout_img/kubota-white.png"
+            alt="SKC_Logo" class="headerleft-logo" width="120" height="25" /></a></li>
+            </ul>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item pt-3">
+                <span class="text-uppercase me-3" style="color: white; font-size: 18px;">firstname lastname</span>
+              </li>
+              <li class="nav-item pt-2 mx-2 ">
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="Picture" class="picture-profile"style="width:35px; height:35px; filter: invert(100%);" />
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link" href="#"><img src="image/layout_img/thailand.png" alt="Flag" class="flag-logo" width="35"
+                    height="35" /></a>
+              </li>
+              <li class="nav-item ml-1">
+                <a class="nav-link disable" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="image/layout_img/logout.png" alt="Signout" class="signout-logo" width="35"
+                    height="35" style="filter: invert(100%);"/></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Sign out pop up-->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img src="image/attention.png" style="width:30px; height:30px;" alt="Worning">&nbsp;&nbsp;&nbsp;&nbsp;
+            <h3>Are you leaving !!!</h3><br>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p style="text-align:left; font-size: 18px;">Select "Yes" below if you are ready to end your current session.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a href=""><button type="button" class="btn btn-danger">Yes</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Sign out pop up-->
+    <div class="d-flex ">
+      <div class="sidebar " id="sidebar">
+        <div class="row-cols-1 ms-2 me-3 pt-4">
+            <a href="#" class="sidebar_menu btn mt-5 mb-2 rounded" style="background-color: #f1f1f1; text-align: left;"><img src="/image/layout_img/envelope.png"
+                class="sidebar-logo" style="width: 25px;height: 25px;"><span class="ms-2">Inbox</span></a>
+
+            <a href="#" class="sidebar_menu btn my-2 rounded" style="background-color: #f1f1f1; text-align: left;"><img src="/image/layout_img/chart-histogram.png" alt="Dashboard"
+                class="sidebar-logo" style="width: 25px;height: 25px;"><span class="ms-2">Dashboard</span></a>
+
+            <a href="#" class="sidebar_menu btn my-2 rounded" style="background-color: #f1f1f1; text-align: left;"><img src="/image/layout_img/book-alt.png" alt="History"
+                class="sidebar-logo" style="width: 25px;height: 25px;"><span class="ms-2">History</span></a>
+
+            <a href="#" class="sidebar_menu btn my-2 rounded" style="background-color: #f1f1f1; text-align: left;"><img src="/image/layout_img/address-book.png" alt="ContactList"
+                class="sidebar-logo" style="width: 25px;height: 25px;"><span class="ms-2">Contact List</span></a>
+            <!-- <a href="#" class="btn my-3 rounded" style="background-color: #f1f1f1;"><img src="/image/layout_img/address-book.png" alt="ContactList"
+                class="sidebar-logo" style="width: 25px;height: 25px;"><span class="ms-2 mt-2 ">Contact List</span></a> -->
+        </div>
+      </div>
+
+      <div class="maincon mx-3 mt-3 bg-white rounded w-100">
+        <div class="main_head pt-3">
+        <span class="fs-2" style="margin-left: 2rem;">Document</span><br>
+        </div>
+        <hr class="mx-4">
+        <div class="tablecontent mx-4">
+            <table class="table" id="table">
+                <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+                </tr>
+                <tr>
+                  <td>Alfreds Futterkiste</td>
+                  <td>Maria Anders</td>
+                  <td>Germany</td>
+                </tr>
+                <tr>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                </tr>
+                <tr>
+                  <td>Ernst Handel</td>
+                  <td>Roland Mendel</td>
+                  <td>Austria</td>
+                </tr>
+                <tr>
+                  <td>Island Trading</td>
+                  <td>Helen Bennett</td>
+                  <td>UK</td>
+                </tr>
+                <tr>
+                  <td>Laughing Bacchus Winecellars</td>
+                  <td>Yoshi Tannamuri</td>
+                  <td>Canada</td>
+                </tr>
+                <tr>
+                  <td>Magazzini Alimentari Riuniti</td>
+                  <td>Giovanni Rovelli</td>
+                  <td>Italy</td>
+                </tr>
+                
+            </table>
+   
+            <div class="cardcontent card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="leftcards col-2">
+                  <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" class="img-fluid rounded-start" alt="..." style="width: 40px; height:40px; border-radius:50%">
+                </div>
+                <div class="col-10">
+                  <div class="card-body">
+                    <h5 class="card-title mb-2"><span>14023</span><span> - </span><span>firstname lastname</span></h5>
+                    <span class="card-text mr-2">DY51010000</span>&emsp;<span>( มีเอกสารแนบ )</span>
+                    <p class="mt-2">ปฏิบัติงาน</p>
+                    <p class="card-text"> <small class="text-muted">16/12/2019</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="main_js.js"></script>  
+<script>
+  var btnContainer = document.getElementById("sidebar");
+  var btns = btnContainer.getElementsByClassName("btn");
+  btns[0].classList.add("active");
+  </script>
+</body>
+</html>

@@ -8,74 +8,35 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link href="{% static '/css/table.css' %}" rel="stylesheet" media="screen" /> 
-    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bulma.min.css" rel="stylesheet" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="{% static '/css/table.css' %}" rel="stylesheet" media="screen" />  -->
 {% endblock %}
 
 {% block body %}
-<!-- <ul class="sidebar" id="sidebar">
-    <li id="test" class="sidebar_menu"><a href="{% url 'index' %}" class="btn active"><img src="/static/image/layout_img/envelope.png" alt="Inbox"
-          class="sidebar-logo"><span>Inbox</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'dashboard' %}" class="btn"><img src="/static/image/layout_img/chart-histogram.png" alt="Dashboard"
-          class="sidebar-logo"><span>Dashboard</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'history' %}" class="btn"><img src="/static/image/layout_img/book-alt.png" alt="History"
-          class="sidebar-logo"><span>History</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'contact' %}" class="btn"><img src="/static/image/layout_img/address-book.png" alt="ContactList"
-            class="sidebar-logo"><span>ContactList</span></a></li>
-</ul> -->
-<div class="main" id="div_register">
-<div class="maincontent">
-    <div class="main_head">
-   <span style="font-size:200%; margin-left: 22px;">Document</span><br>
-     </div>
-  <hr>
-   <div class="tablecontent" id="tablecontent">
-    <!-- <table id="example" class="table table-striped table-bordered"> -->
-    <table id="example" class="table table-hover table-bordered nowrap" style="width:100%">
-        <thead>
-            <tr>
-                <th style="width: 5%;" class="no-sort">Detail URL</th>
-                <!-- <th>Document Number</th> -->
-                <th style="width: 20%;" class="no-sort">Title</th>
-                <th style="width: 10%;">Department</th>
-                <th style="width: 10%;">Requester</th>
-                <th style="width: 10%;">Request Date</th>
-                <!-- <th style="width: 7.5%;">Last Update</th> -->
-                <th style="width: 15%;">System</th>
-                <!-- <th style="width: 10%;" class="no-sort">Document Status</th> -->
-                <th style="width: 5%;" class="no-sort">Attachment</th>
-                <!-- <th>Approver</th> -->
-                <!-- <th style="width: 15%;" class="no-sort"></th> -->
+
+    <div class="main_head pt-3">
+    <span class="fs-2" style="margin-left: 2rem;">Document</span><br>
+    </div>
+    <hr class="mx-4">
+    <div id="tablecontent" class="tablecontent mx-4">
+        <table id="example" class="table table-hover table-striped table-sm nowrap" style="width:100%;">
+        <thead class="thead_set">
+            <tr >
+                <th class="no-sort text-center">Detail URL</th> <!--style="width: 5%;"-->
+                <th class="no-sort text-center">Title</th> <!--style="width: 20%;"-->
+                <th class="text-center">Department</th> <!--style="width: 10%;"-->
+                <th class="text-center">Requester</th>
+                <th class="text-center">Request Date</th>
+                <th class="text-center">System</th>
+                <th class="no-sort text-center">Attachment</th>
             </tr>
         </thead>
-    <!-- </table> -->
-        <tbody>
-        {% for data in all_data %}
-            <tr>
-              <td><a href= {{ data.detailUrl }} target="_blank"><img src="/static/image/file.png" style="width: 50px; height: 50px;"></a></td>
-              <!-- <td>{{ data.docNumber }}</td>   -->
-              <td>{{ data.title }}</td> 
-              <td>{{ data.department }}</td>
-              <td>{{ data.requesterCode }}</td>
-              <td>{{ data.requestDate }}</td>
-              <!-- <td>{{ data.lastUpdate }}</td> -->
-              <td>{{ data.system }}</td>
-              <!-- <td>{{ data.docStatus }}</td>  -->
-              {%if data.attachment == True %}:
-                <td>✔</td>
-              {% else %}:
-                <td>-</td>
-                {%endif%}
-              <!-- <td>{{ data.approverCode }}</td> -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        </table>
     </div>
-</div>
-</div>
-<!-- <script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script> -->
+    <div id="cardshow" class ="container">
+
+    </div>
+    </div>
+<script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script>
 <script>
     // $( window ).load(function() {buildList() });
     // buildList();
@@ -101,8 +62,23 @@
         var btns = btnContainer.getElementsByClassName("btn");
         btns[0].classList.add("active");
         
-        // var data = "{{ all_data|safe}}"
 
-        // console.log(data[0]);
+        data = {{all_data|safe}};
+        buildList(data)
+        buildCard(data)
+        // console.log(data);
+        // window.addEventListener("resize", function () {
+
+        // const tablecontent = document.getElementById('tablecontent');
+        // const cardcontent = document.getElementById('cardshow');
+        // if (window.innerWidth < 576 ){
+        //     tablecontent.replaceChildren();
+        //     buildCard(data)
+        // }else{
+        //     cardcontent.replaceChildren();
+        //     buildList(data)
+        // }
+
+        // });
 </script>
 {% endblock %}

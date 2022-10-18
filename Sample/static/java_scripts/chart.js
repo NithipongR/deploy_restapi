@@ -101,7 +101,9 @@ function buildList_1(data1) {
         plugins: [ChartDataLabels],
     });
 };
-// end function and bar chart
+
+
+
 function buildList_2(data1) {
     let list = data1;
 
@@ -172,7 +174,8 @@ function buildList_2(data1) {
         plugins: [ChartDataLabels],
     });
 };
-//
+
+
 function count(data1){
     // let list = data1;
     console.log(data1)
@@ -236,6 +239,7 @@ function count(data1){
             }
         }, duration);
     });
+
     let valueDisplays4 = document.querySelectorAll(".card-number1");
     let interval4 = 300;
     valueDisplays4.forEach((valueDisplays4) => {
@@ -251,7 +255,8 @@ function count(data1){
         }, duration);
     });
 };
-// )
+
+
 function getNumberOfDays(start, end) {
     const date1 = new Date(start);
     const date2 = new Date(end);
@@ -267,8 +272,13 @@ function getNumberOfDays(start, end) {
     return diffInDays;
 }
 
-function testt(status,data1){
-            console.log("In function",data1)
+
+function testt(status = "today") {
+    let url = "http://localhost:8000/api/testRequest-list";
+    fetch(url)
+        .then((res) => res.json())
+        .then(function (data1) {
+            console.log("gggggg", data1)
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -278,104 +288,104 @@ function testt(status,data1){
             const week_data = [];
             const month_data = [];
             // console.log(data1.length)
-            for (let i=0;i < data1.length;i++){ //4
-                if(getNumberOfDays(data1[i]['lastUpdate'],today)==0){ //0
-                        today_data.push(data1[i]);
-                        week_data.push(data1[i]);
-                        month_data.push(data1[i])
-                }else if(getNumberOfDays(data1[i]['lastUpdate'],today)<=7){
-                        week_data.push(data1[i]);
-                        month_data.push(data1[i])
-                }else if(getNumberOfDays(data1[i]['lastUpdate'],today)<=31){// 0 - 31
-                        month_data.push(data1[i])
+            for (let i = 0; i < data1.length; i++) {
+                if (getNumberOfDays(data1[i]['lastUpdate'], today) == 0) {
+                    today_data.push(data1[i]);
+                    week_data.push(data1[i]);
+                    month_data.push(data1[i])
+                } else if (getNumberOfDays(data1[i]['lastUpdate'], today) <= 7) {
+                    week_data.push(data1[i]);
+                    month_data.push(data1[i])
+                } else if (getNumberOfDays(data1[i]['lastUpdate'], today) >= 0) {
+                    month_data.push(data1[i])
                 }
-                }
-            // console.log("Today data",month_data)
+            }
+            // console.log("Today data",today_data)
             // console.log(week_data)
             // console.log(month_data)
             const name_label = [... new Set(data1.map(data => data.system))]
-            // console.log(name_label.length)
-            var item =[];
+            // console.log(name_label)
+            var item = [];
             // console.log(item)
-            // console.log(today_data)
+            // console.log(today_data[0]['system'])
             // console.log(name_label[0])
-        if(status=='today'){
-            for(let i=0;i<name_label.length;i++){
-                let wait_count = 0
-                let app_count = 0
-                let rej_count = 0
-                for(let j=0;j<data1.length;j++){
-                    if(data1[j]['system']==name_label[i]){//data1
-                        if(data1[j]['docStatus'].toLowerCase()=='waitforapprove'){
-                            // console.log(name_label[i])
-                            wait_count += 1;
-                            // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
-                        }else if(data1[j]['docStatus'].toLowerCase()=='complete'){
-                            app_count += 1;
-                            // item[name_label[i]]['Approved'] +=1;
-                        }else if(data1[j]['docStatus'].toLowerCase()=='cancel'){
-                            rej_count += 1;
-                            // item[name_label[i]]['Reject'] +=1;
+            if (status == 'today') {
+                for (let i = 0; i < name_label.length; i++) {
+                    let wait_count = 0
+                    let app_count = 0
+                    let rej_count = 0
+                    for (let j = 0; j < today_data.length; j++) {
+                        if (today_data[j]['system'] == name_label[i]) {
+                            if (today_data[j]['docStatus'].toLowerCase() == 'wait approve') {
+                                // console.log(name_label[i])
+                                wait_count += 1;
+                                // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
+                            } else if (today_data[j]['docStatus'].toLowerCase() == 'approved') {
+                                app_count += 1;
+                                // item[name_label[i]]['Approved'] +=1;
+                            } else if (today_data[j]['docStatus'].toLowerCase() == 'reject') {
+                                rej_count += 1;
+                                // item[name_label[i]]['Reject'] +=1;
+                            }
                         }
                     }
+                    var testttt = { system: name_label[i], Wait: wait_count, Approved: app_count, Reject: rej_count, Total: wait_count + app_count + rej_count };
+                    item[i] = testttt;
                 }
-                var testttt = {system:name_label[i],Wait:wait_count,Approved:app_count,Reject:rej_count,Total:wait_count+app_count+rej_count};
-                item[i] = testttt;
-            }
-        }else if(status=='weekly'){
-            for(let i=0;i<name_label.length;i++){
-                let wait_count = 0
-                let app_count = 0
-                let rej_count = 0
-                for(let j=0;j<week_data.length;j++){
-                    if(week_data[j]['system']==name_label[i]){
-                        if(week_data[j]['docStatus'].toLowerCase()=='waitforapprove'){
-                            // console.log(today_data[j]['system'])
-                            // console.log(name_label[i])
-                            wait_count += 1;
-                            // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
-                        }else if(week_data[j]['docStatus'].toLowerCase()=='complete'){
-                            app_count += 1;
-                            // item[name_label[i]]['Approved'] +=1;
-                        }else if(week_data[j]['docStatus'].toLowerCase()=='cancel'){
-                            rej_count += 1;
-                            // item[name_label[i]]['Reject'] +=1;
+            } else if (status == 'weekly') {
+                for (let i = 0; i < name_label.length; i++) {
+                    let wait_count = 0
+                    let app_count = 0
+                    let rej_count = 0
+                    for (let j = 0; j < week_data.length; j++) {
+                        if (week_data[j]['system'] == name_label[i]) {
+                            if (week_data[j]['docStatus'].toLowerCase() == 'wait approve') {
+                                // console.log(today_data[j]['system'])
+                                // console.log(name_label[i])
+                                wait_count += 1;
+                                // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
+                            } else if (week_data[j]['docStatus'].toLowerCase() == 'approved') {
+                                app_count += 1;
+                                // item[name_label[i]]['Approved'] +=1;
+                            } else if (week_data[j]['docStatus'].toLowerCase() == 'reject') {
+                                rej_count += 1;
+                                // item[name_label[i]]['Reject'] +=1;
+                            }
                         }
                     }
+                    var testttt = { system: name_label[i], Wait: wait_count, Approved: app_count, Reject: rej_count, Total: wait_count + app_count + rej_count };
+                    item[i] = testttt;
                 }
-                var testttt = {system:name_label[i],Wait:wait_count,Approved:app_count,Reject:rej_count,Total:wait_count+app_count+rej_count};
-                item[i] = testttt;
-            }
-        }else if(status=='monthly'){
-            for(let i=0;i<name_label.length;i++){
-                let wait_count = 0
-                let app_count = 0
-                let rej_count = 0
-                for(let j=0;j<month_data.length;j++){
-                    if(month_data[j]['system']==name_label[i]){
-                        if(month_data[j]['docStatus'].toLowerCase()=='waitforapprove'){
-                            // console.log(today_data[j]['system'])
-                            // console.log(name_label[i])
-                            wait_count += 1;
-                            // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
-                        }else if(month_data[j]['docStatus'].toLowerCase()=='complete'){
-                            app_count += 1;
-                            // item[name_label[i]]['Approved'] +=1;
-                        }else if(month_data[j]['docStatus'].toLowerCase()=='cancel'){
-                            rej_count += 1;
-                            // item[name_label[i]]['Reject'] +=1;
+            } else if (status == 'monthly') {
+                for (let i = 0; i < name_label.length; i++) {
+                    let wait_count = 0
+                    let app_count = 0
+                    let rej_count = 0
+                    for (let j = 0; j < month_data.length; j++) {
+                        if (month_data[j]['system'] == name_label[i]) {
+                            if (month_data[j]['docStatus'].toLowerCase() == 'wait approve') {
+                                // console.log(today_data[j]['system'])
+                                // console.log(name_label[i])
+                                wait_count += 1;
+                                // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
+                            } else if (month_data[j]['docStatus'].toLowerCase() == 'approved') {
+                                app_count += 1;
+                                // item[name_label[i]]['Approved'] +=1;
+                            } else if (month_data[j]['docStatus'].toLowerCase() == 'reject') {
+                                rej_count += 1;
+                                // item[name_label[i]]['Reject'] +=1;
+                            }
                         }
                     }
+                    var testttt = { system: name_label[i], Wait: wait_count, Approved: app_count, Reject: rej_count, Total: wait_count + app_count + rej_count };
+                    item[i] = testttt;
                 }
-                var testttt = {system:name_label[i],Wait:wait_count,Approved:app_count,Reject:rej_count,Total:wait_count+app_count+rej_count};
-                item[i] = testttt;
             }
-        }
-        console.log(status,"  ",item)
-        
-        count(item);
-        buildList_1(item);
-        buildList_2(item);
-        // updateBarChart();
-}
+            console.log(status, "  ", item)
+            count(item);
+            buildList_1(item);
+            buildList_2(item);
+            // updateBarChart();
+        })
+    }
 

@@ -8,78 +8,41 @@
 {% endblock %}
 
 {% block extra_css %}
-<link href="{% static '/css/table.css' %}" rel="stylesheet" media="screen" />
+<!-- <link href="{% static '/css/table.css' %}" rel="stylesheet" media="screen" /> -->
 {% endblock %}
 
 {% block body %}
-<!-- <ul class="sidebar" id="sidebar">
-    <li id="test" class="sidebar_menu"><a href="{% url 'index' %}" class="btn"><img src="/static/image/layout_img/envelope.png" alt="Inbox"
-          class="sidebar-logo"><span>Inbox</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'dashboard' %}" class="btn"><img src="/static/image/layout_img/chart-histogram.png" alt="Dashboard"
-          class="sidebar-logo"><span>Dashboard</span></a></li>
-    <li class="sidebar_menu"><a href="{% url 'history' %}" class="btn active"><img src="/static/image/layout_img/book-alt.png" alt="History"
-          class="sidebar-logo"><span>History</span></a></li>
-      <li class="sidebar_menu"><a href="{% url 'contact' %}" class="btn"><img src="/static/image/layout_img/address-book.png" alt="ContactList"
-            class="sidebar-logo"><span>ContactList</span></a></li>
-</ul> -->
-<div class="main" id="div_register">
-<div class="maincontent">
-    <div class="main_head">
-   <span style="font-size:250%;margin-left:22px;">History</span><br>
-     </div>
-  <hr>
-  <div class="tablecontent"  id="tablecontent">
-    <table id="example" class="table table-striped table-bordered">
-      <thead>
-        <tr>
-            <!-- <th>Detail URL</th> -->
-            <!-- <th>Document Number</th> -->
-            <th>Title</th>
-            <th>System</th>
-            <th>Document Status</th>
-            <th>Department</th>
-            <th>Requester</th>  
-            <th>Request Date</th>
-            <th>Last Update</th>
-            <th>Attachment</th>
-            <!-- <th>Approver</th> -->
-        </tr>
-      </thead>
-      <tbody>
-        {% for data in all_data %}
-        <tr>
-          <!-- <td><a href= {{ testRequest.detailUrl }} target="_blank"><img src="/static/image/icons8-document-50.png"></a></td> -->
-          <!-- <td>{{ data.docNumber }}</td>   -->
-          <td>{{ data.title }}</td> 
-          <td>{{ data.system }}</td>
-          {%if data.docStatus == "Complete" %}:
-            <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td>
-          {%else%}:
-            <td><img src="/static/image/cancel.png" style="width: 20px; height: 20px;"></td>
-          {%endif%}
-          <td>{{ data.department }}</td>
-          <td>{{ data.requesterCode }}</td>
-          <td>{{ data.requestDate }}</td>
-          <td>{{ data.lastUpdate }}</td> 
-          {%if data.attachment == True %}:
-            <!-- <td><img src="/static/image/checked.png" style="width: 20px; height: 20px;"></td> -->
-            <td>✔</td>
-          {% else %}:
-          <!-- <td><img src="/static/image/cancel.png" style="width: 20px; height: 20px;"></td> -->
-          <td>-</td>
-          {%endif%}
-          <!-- <td>{{ testRequest.approver }}</td> -->
-        </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-  </div>
-</div>
-</div>  
+  <div class="main_head pt-3">
+    <span class="fs-2" style="margin-left: 2rem;">History</span><br>
+    </div>
+    <hr class="mx-4">
+    <div class="tablecontent mx-4 ">
+        <table id="example" class="table table-hover table-striped table-sm nowrap" style="width:100%; border-left-color: #f9fafb;">
+        <thead>
+            <tr>
+                <th style="width: 20%;" class="no-sort text-center">Title</th>
+                <th style="width: 15%;" class="text-center">System</th>
+                <th style="width: 10%;" class="text-center">Status</th>
+                <th style="width: 10%;" class="no-sort text-center">Department</th>
+                <th style="width: 15%;" class="no-sort text-center">Requester</th>
+                <th style="width: 15%;" class="text-center">Request Date</th>
+                <th style="width: 15%;" class="text-center">Last Update</th>
+            </tr>
+        </thead>
+    </table>
+    </div>
+    <div id="cardshow" class ="container">
+
+    </div>
+    </div>
+<script type="text/javascript" src="{% static '/java_scripts/createdatatable_history.js' %}"></script>
 <script>
   var btnContainer = document.getElementById("sidebar");
   var btns = btnContainer.getElementsByClassName("btn");
   btns[2].classList.add("active");
+  data = {{all_data|safe}};
+  buildList(data)
+  buildCard(data)
 </script>
 {% endblock %}
 

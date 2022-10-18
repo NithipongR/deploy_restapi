@@ -45,8 +45,9 @@ menu.addEventListener('click', function () {
       // setTimeout('div_register.style.left ="60px";',175);
       setTimeout('div_register.style.zIndex = "0";',175);
      }else if(window.innerWidth < 426){
-      // div_register.style.width = "92%";
-      // div_register.style.position ="fixed";
+      setTimeout('div_register.style.zIndex = "0";',175);
+      div_register.style.width = "93%";
+      div_register.style.position ="fixed";
      }
   }else{
     setTimeout('div_register.style.width = "";',270);

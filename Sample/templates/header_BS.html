@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #027779; height: 80px;">
+    <div class="container-fluid">
+        <ul class="navbar-nav ">
+        <li><img src="/static/image/layout_img/menu-burger.png" id="menu" alt="hamburger_Logo"
+  class="hamburger-logo" width="35" height="35" style="margin-left: 5px;
+  margin-right: 20px;
+  cursor: pointer;"/></li>
+      <li><a class="navbar-brand" href="/"><img src="/static/image/layout_img/kubota-white.png"
+        alt="SKC_Logo" class="headerleft-logo" width="120" height="25" /></a></li>
+        </ul>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Info</a></li>
+            <li><a class="dropdown-item" href="#">Change Language</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Signout</a></li>
+          </ul>
+        </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item pt-3">
+            <span class="text-uppercase me-3" style="color: white; font-size: 18px;">{{ request.identity_context_data.username }}</span>
+          </li>
+          <li class="nav-item pt-2 mx-2 ">
+            <img src="{{ pic_url }}" alt="Picture" class="picture-profile rounded-circle" style="width:35px; height:35px;" />
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#"><img src="/static/image/layout_img/thailand.png" alt="Flag" class="flag-logo" width="35"
+                height="35" /></a>
+          </li>
+          <li class="nav-item ml-1">
+            <a class="nav-link disable" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="/static/image/layout_img/logout.png" alt="Signout" class="signout-logo" width="35"
+                height="35" style="filter: invert(100%);"/></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <img src="/static/image/attention.png" style="width:30px; height:30px;" alt="Worning">&nbsp;&nbsp;&nbsp;&nbsp;
+            <h3>Are you leaving !!!</h3><br>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p style="text-align:left; font-size: 18px;">Select "Yes" below if you are ready to end your current session.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a href="{% url 'sign_out' %}"><button type="button" class="btn btn-danger">Yes</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
