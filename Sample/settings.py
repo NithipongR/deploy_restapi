@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Myapi',
-    'sslserver'
+    'sslserver',
     # 'django_extensions',
 ]
 
@@ -81,14 +81,23 @@ WSGI_APPLICATION = 'Sample.wsgi.application'
 
 DATABASES = {
     'default': {
+
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
+
+        # 'ENGINE': 'sql_server.pyodbc',
+        # 'NAME':  'skcone',
+        # 'USER':  'Skcone',
+        # 'PASSWORD':  'Oneapp2022DB*',
+        # 'HOST':  'p701sssi01-sd02.database.windows.net',
+        # 'PORT':  '',
+        # 'OPTIONS':  {
+        #     'driver': 'ODBC Driver 17 for SQL Server', 
+        # },
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+DATABASE_CONNECTION_POOLING = False
 
 AUTH_PASSWORD_VALIDATORS = [
     {

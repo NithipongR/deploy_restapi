@@ -3,7 +3,7 @@ from django.conf import settings
 import requests
 from django.shortcuts import redirect
 import json
-
+# from django.contrib.auth.models import User
 ms_identity_web = settings.MS_IDENTITY_WEB
 
 # pic_url = url_pic()
@@ -20,6 +20,8 @@ def index(request):
         # json.dumps(data)
         # print("After",data)
         # data = data_request("All")
+        # superusers = User.objects.filter(is_superuser=True)
+        # print(superusers)
         return render(request, 'auth/inbox.html', context={'pic_url' : pic_url,'all_data' : data})
 
     else:
@@ -61,7 +63,7 @@ def url_pic(status):
         # print(authZ)
         result1 = requests.get(graph, headers={'Authorization': authZ}).json()
 
-        # mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEseries" #https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEXP
+        # mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEXP"
         mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEXP"
         hed = {'Authorization': authZ , 'Content-Type': 'application/json'}
         payload = json.dumps({

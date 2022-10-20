@@ -144,19 +144,19 @@ function buildCard(data) {
       }
       // console.log(data[i].attachment)
       let item = `
-      <div class="card border-1 my-1" style="max-width: 500px;">
-            <div class="row g-0">
-                <div class="left-card col-2 rounded-start">
+      <div class="card border border-2 my-3 border-dark" style="max-width: 500px;">
+            <div class="row g-0 pb-0">
+                <div class="left-card col-2" style="background-color: currentColor;">
                     <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
                         class="img-fluid rounded mx-auto d-block" alt="..."
-                        style="width: 45px; height:45px; margin-top: 35px;">
+                        style="width: 33px; height:33px; margin-top: 8.5vh;">
                 </div>
                 <div class="right-card col-10">
-                    <div class="card-body">
+                    <div class="card-body" style="padding-bottom: 0px !important;">
                         <div class="card-title h5"><span>${data[i].requesterCode}</span> - <span>${data[i].requesterNameEN}</span></div>
                         <div class="cart-text fw-normal h6"><strong>Department: </strong><span>${data[i].department}&nbsp;${attach}</span></div>
                         <div class="cart-text fw-normal h6"><strong>Title: </strong><span>${data[i].title}</span>
-                            <div><small class="text-muted d-flex justify-content-end">${data[i].requestDate}</small></div>
+                            <div><small class="text-muted d-flex justify-content-end pt-2">${data[i].requestDate}</small></div>
                         </div>
                     </div>
                 </div>
