@@ -1,11 +1,6 @@
 
 function buildList(data){
         let list = data;
-        // console.log(data)
-        // if (list.docStatus.toLowerCase() == 'wait approve'){ 
-        //  const test = data_use.filter(data_use =>data_use.id == 2);
-        //  const test2 = Array.from(test)
-        //  console.log("Test is ",test['system']);
          $(document).ready(function () {
             $('#example').DataTable({
                 data: list,
@@ -13,15 +8,12 @@ function buildList(data){
                 deferRender: true,
                 stateSave: true,
                 destroy: true,
-                // "sScrollX": "100%" ,
                 scrollX:true,
-                // scrollCollapse: true,
                 order: [[4, 'desc']],
                 fixedColumns:   {
                   left: 1,
               },
                 columnDefs:[
-                  // { "width": "200px", "targets": 1 },
                   { targets: 'no-sort', orderable: false },
                   {
                      "targets":0,
@@ -131,6 +123,7 @@ function buildList(data){
 // if(innerWidth<576){
 //   $('#example').dataTable().clear();
 // }
+
 function buildCard(data) {
   // console.log("contactsys", data);
   let task = document.getElementById("cardshow");
@@ -144,12 +137,12 @@ function buildCard(data) {
       }
       // console.log(data[i].attachment)
       let item = `
-      <div class="card border border-2 my-3 border-dark" style="max-width: 500px;">
-            <div class="row g-0 pb-0">
-                <div class="left-card col-2" style="background-color: currentColor;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
-                        class="img-fluid rounded mx-auto d-block" alt="..."
-                        style="width: 33px; height:33px; margin-top: 8.5vh;">
+      <div class="card border border-3 my-3 border-dark" style="max-width: 500px;">
+            <div class="row g-0 pb-0" style="cursor: pointer;" onclick="window.open('${data[i].detailUrl}')">
+                <div class="left-card col-2" style="background-color: ${data[i].color}; border-top-left-radius:2%; border-bottom-left-radius:2%">
+                    <img src="${data[i].picturesystem}"
+                        class="img-fluid mx-auto my-5 d-block" alt="..."
+                        style="width: 45px; height:45px; border-radius:50%">
                 </div>
                 <div class="right-card col-10">
                     <div class="card-body" style="padding-bottom: 0px !important;">

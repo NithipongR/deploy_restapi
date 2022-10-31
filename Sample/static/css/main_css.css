@@ -70,7 +70,7 @@ div.dropdown{
     filter: invert();
 }
 .sidebar_menu.btn.active{
-  background-color: #00a8ab !important;
+  background-color: #027779 !important;
   color: #fff;
 }
 .sidebar_menu.btn.active img{
@@ -112,6 +112,10 @@ tbody{
 ::-webkit-scrollbar-thumb:hover {
     background: #b30000; 
 }
+.page-item.active .page-link{
+    background-color: #027779  !important; 
+    border-color: #027779 !important; 
+}
 @media (max-width: 593px){
     .sidebar{
         display:none;
@@ -128,8 +132,8 @@ tbody{
         width: 12rem;
         position: fixed;
         z-index: 9;
-        border-right: outset;
-        
+        /* border-right: outset; */
+        box-shadow: -9px 10px 0px 10px black;
     }
 
     .shortly-sidebar span{

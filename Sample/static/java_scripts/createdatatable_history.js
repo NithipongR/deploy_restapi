@@ -20,9 +20,9 @@ function buildList(data){
                  "data":"detail_link",
                  "render": function(data,type,row,meta){
                     if(data == 'Complete'){
-                        return '<img src="/static/image/checked.png" style="width: 35px; height: 35px;">'
+                        return '<img src="/static/image/checked.png" style="width: 30px; height: 30px;">'
                     }else{
-                        return '<img src="/static/image/cancel.png" style="width: 35px; height: 35px;">'
+                        return '<img src="/static/image/cancel.png" style="width: 30px; height: 30px;">'
                     }                  
                  }
                },
@@ -59,11 +59,11 @@ for (let i in data) {
   }
   let item = `
   <div class="card border border-3 my-3 ${status_color}" style="max-width: 500px;">
-            <div class="row g-0 pb-0">
-                <div class="left-card col-2 rounded-start">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
-                        class="img-fluid rounded mx-auto d-block" alt="..."
-                        style="width: 33px; height:33px; margin-top: 10vh;">
+          <div class="row g-0 pb-0" style="cursor: pointer;" onclick="window.open('${data[i].detailUrl}')">
+                <div class="left-card col-2" style="background-color: #027779; border-top-left-radius:2%; border-bottom-left-radius:2%">
+                    <img src="${data[i].picturesystem}"
+                        class="img-fluid mx-auto my-5 d-block" alt="..."
+                        style="width: 45px; height:45px; border-radius:50%;">
                 </div>
                 <div class="right-card col-10">
                     <div class="card-body" style="padding-bottom: 0px !important;">

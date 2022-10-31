@@ -7,7 +7,7 @@ function buildList_1(data1) {
 
     let total_approved = list.map(
         function (index) { return index.Approved; });
-    console.log("Total approve", total_approved);
+    console.log("Total Completed", total_approved);
 
     let total_reject = list.map(
         function (index) { return index.Reject; });
@@ -21,7 +21,7 @@ function buildList_1(data1) {
         data: {
             labels: total_label,
             datasets: [{
-                label: 'Approved 👍',
+                label: 'Completed',
                 data: total_approved,
                 backgroundColor: [
                     '#3ccc37',
@@ -36,7 +36,7 @@ function buildList_1(data1) {
                 },
             },
             {
-                label: 'Reject 👎',
+                label: 'Cancelled',
                 data: total_reject,
                 backgroundColor: [
                     '#eb3f3f',

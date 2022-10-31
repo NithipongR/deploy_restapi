@@ -18,6 +18,7 @@
 
 {% block body %}
 <!-- <div class="main" id="div_register"> -->
+    <div class="loading"></div>
     <div class="container-fluid">
         <div class="radio-toolbar ps-0">
             <input type="radio" id="radio1" onclick="testt()" name="radios" value="all" checked>
@@ -40,19 +41,19 @@
             <div class="col-12 col-md-6 col-lg-3 col-xl-3 mb-3 mb-lg-0">
                 <div class="card-content bg-white rounded-3 shadow-sm border border-1">
                     <h1 class="card-number2 ms-3 pt-1" id="allrequest">0</h1>
-                    <div class="cardName2 ms-3 pb-2">AllRequest</div>
+                    <div class="cardName2 ms-3 pb-2">All Request</div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3 col-xl-3 mb-3 mb-lg-0">
                 <div class="card-content bg-white rounded-3 shadow-sm border border-1">
                     <h1 class="card-number3 ms-3 pt-1" id="approvedrequest">0</h1>
-                    <div class="cardName3 ms-3 pb-2">Approved</div>
+                    <div class="cardName3 ms-3 pb-2">Completed</div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-3 col-xl-3 mb-0 mb-lg-0">
                 <div class="card-content bg-white rounded-3 shadow-sm border border-1">
                     <h1 class="card-number4 ms-3 pt-1" id="rejectrequest">0</h1>
-                    <div class="cardName4 ms-3 pb-2">Reject</div>
+                    <div class="cardName4 ms-3 pb-2">Cancelled</div>
                 </div>
             </div>
         </div>
@@ -61,7 +62,7 @@
     <div class="row ps-3 ps-sm-3 pt-0 g-sm-1 pt-md-0 ps-xl-2"><!--ps-3 ps-sm-3 ps-xl-2-->
         <div class="col-12 col-xl-7 pt-md-0 g-3">
             <div class="cardChart bg-white rounded-3 shadow-sm border border-1 me-3 ms-0">
-                <div class="chart text-center pt-3">Number of Approval and Rejection of each systems</div>
+                <div class="chart text-center pt-3">Number of Completed and Cancelled of each systems</div>
                 <div class="card-body">
                     <canvas id="barchart" class="barr"></canvas>
                 </div>

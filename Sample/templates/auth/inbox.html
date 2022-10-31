@@ -12,16 +12,16 @@
 {% endblock %}
 
 {% block body %}
-
+    <div class="loading"></div>
     <div class="main_head pt-3">
     <span class="fs-2" style="margin-left: 2rem;">Document</span><br>
     </div>
     <hr class="mx-4">
     <div id="tablecontent" class="tablecontent mx-4">
         <table id="example" class="table table-hover table-striped table-sm nowrap" style="width:100%;">
-        <thead class="thead_set bg-dark text-white">
+        <thead class="thead_set text-white" style="background-color: #027779;">
             <tr>
-                <th class="no-sort text-center bg-dark text-white">Detail URL</th> <!--style="width: 5%;"-->
+                <th class="no-sort text-center text-white" style="background-color: #027779;">Detail URL</th> <!--style="width: 5%;"-->
                 <th class="no-sort text-center">Title</th> <!--style="width: 20%;"-->
                 <th class="text-center">Department</th> <!--style="width: 10%;"-->
                 <th class="text-center">Requester</th>
@@ -65,23 +65,8 @@
         var btns = btnContainer.getElementsByClassName("btn");
         btns[0].classList.add("active");
         
-
         data = {{all_data|safe}};
         buildList(data)
         buildCard(data)
-        // console.log(data);
-        // window.addEventListener("resize", function () {
-
-        // const tablecontent = document.getElementById('tablecontent');
-        // const cardcontent = document.getElementById('cardshow');
-        // if (window.innerWidth < 576 ){
-        //     tablecontent.replaceChildren();
-        //     buildCard(data)
-        // }else{
-        //     cardcontent.replaceChildren();
-        //     buildList(data)
-        // }
-
-        // });
 </script>
 {% endblock %}
