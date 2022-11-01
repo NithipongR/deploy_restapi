@@ -25,6 +25,19 @@ menu.addEventListener('click', function () {
             }
         if(window.innerWidth<594){
         setTimeout('document.querySelector(".maincon.mx-3.mt-3.bg-white.rounded.w-100").style.opacity ="0.1";',1);
+        document.querySelector(".cardshow.container").style.pointerEvents="none";
+        // setTimeout('document.querySelector(".card.border.border-3.my-3.border-dark").style.cursor ="none";',1);
+        // setTimeout('document.querySelector(".maincon.mx-3.mt-3.bg-white.rounded.w-100").style.visibility ="hidden";',1);
+        document.onclick = function(e){
+          if(e.target.id == 'maincon')
+          {
+            sidebar.classList.remove('shortly-sidebar');
+            setTimeout('document.querySelector(".maincon.mx-3.mt-3.bg-white.rounded.w-100").style.opacity ="";',1);
+            document.querySelector(".cardshow.container").style.pointerEvents="";
+            // setTimeout('document.querySelector(".card.border.border-3.my-3.border-dark").style.cursor ="";',1);
+            // setTimeout('document.querySelector(".maincon.mx-3.mt-3.bg-white.rounded.w-100").style.visibility ="visible";',1);
+          }
+        }
         }
     }else{
       setTimeout('document.querySelector(".maincon.mx-3.mt-3.bg-white.rounded.w-100").style.opacity ="";',1);

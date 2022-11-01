@@ -85,28 +85,29 @@ def get_data(status,empID):
     try:
         ms_identity_web.acquire_token_silently()      
         authZ = f'Bearer {ms_identity_web.id_data._access_token}'
-        print(authZ)
+        # print(authZ)
         # result1 = requests.get(graph, headers={'Authorization': authZ}).json()
         # print(empID)
         mydas_api = "https://e-accounting-dev.siamkubota.co.th/web-api/api/esesiesform/getDataEXP"
         hed = {'Authorization': authZ , 'Content-Type': 'application/json'}
         payload = json.dumps({
-        "department": "DY34000000",
+        "department": "",
         "requesterCode": "",
         "requesterDate": "",
         "lastUpdate": "",
         "system": "",
-        "docStatus": "WaitForApprove,WaitForInitial",
+        "docStatus": "WaitForApprove,WaitForInitial,Complete,Cancel",
         "attachment": "",
-        "approverCode": "", #empID
-        "pageSize": 20,
+        "approverCode": "empID", #empID
+        "pageSize": 100,
         "pageIndex": 0
         })
         # print(payload)
         result_api = requests.post(mydas_api, headers=hed,data=payload).json()
         # result_api['data'][0]['picturesystem'] = '/static/image/contactlist/myDAS.png'
-        # print(result_api['data'][0])
+        # print(len(result_api['data']))
         data_use = []
+        # j = 0
         for i in result_api['data']:
             if i['attachment'] == True:
                 i['attachment'] = '✔'
@@ -120,34 +121,34 @@ def get_data(status,empID):
             if i['system'] == 'EXP':
                  i['picturesystem'] = '/static/image/contactlist/e-pro.png'
             if i['docStatus'] == 'WaitForApprove':
-                i['color'] = 'yellow'
+                i['color'] = '#027779' #da5a34
             elif i['docStatus'] == 'WaitForInitial':
-                i['color'] = 'orange'
+                i['color'] = '#da5a34' #027779
             i["requestDate"] = changedatetime(i["requestDate"])
             i["lastUpdate"] = changedatetime(i["lastUpdate"])
-            # print(i)
-            data_use.append(i)
+            # print(j)
+            # j=j+1
             
-        # if status.startswith("All"):
-        #     for i in result_api['data']:
-        #         if i["docStatus"] != "Draft":
-        #             data_use.append(i)
-        # elif status.startswith("Complete"):
-        #     for i in result_api['data']:
-        #         if i["docStatus"] == "Complete":
-        #             data_use.append(i)
-        # elif status.startswith("Cancel"):
-        #     for i in result_api['data']:
-        #         if i["docStatus"] == "Cancel":
-        #             data_use.append(i)
-        # elif status.startswith("Wait") :
-        #     for i in result_api['data']:
-        #         if i["docStatus"] == "WaitForApprove":
-        #             data_use.append(i)
-        # elif status.startswith("A_C") :
-        #     for i in result_api['data']:
-        #         if i["docStatus"] == "Complete" or  i["docStatus"] == "Cancel":
-        #             data_use.append(i)
+        if status.startswith("All"):
+            for i in result_api['data']:
+                if i["docStatus"] != "Draft":
+                    data_use.append(i)
+        elif status.startswith("Complete"):
+            for i in result_api['data']:
+                if i["docStatus"] == "Complete":
+                    data_use.append(i)
+        elif status.startswith("Cancel"):
+            for i in result_api['data']:
+                if i["docStatus"] == "Cancel":
+                    data_use.append(i)
+        elif status.startswith("Wait") :
+            for i in result_api['data']:
+                if i["docStatus"] == "WaitForApprove" or i["docStatus"] == "WaitForInitial":
+                    data_use.append(i)
+        elif status.startswith("A_C") :
+            for i in result_api['data']:
+                if i["docStatus"] == "Complete" or  i["docStatus"] == "Cancel":
+                    data_use.append(i)
     
         return data_use
     except Exception as e: print("Error ",e)

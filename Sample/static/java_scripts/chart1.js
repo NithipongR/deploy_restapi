@@ -1,13 +1,13 @@
 // create bar chart
 // create function to import api
 function buildList_1(data1) {
-    // console.log("Data1", data1);
+    console.log("Data1", data1);
     let list = data1;
     const total_label = [...new Set(list.map(x => x.system))];
 
     let total_approved = list.map(
         function (index) { return index.Approved; });
-    console.log("Total Completed", total_approved);
+    // console.log("Total Completed", total_approved);
 
     let total_reject = list.map(
         function (index) { return index.Reject; });
@@ -175,7 +175,7 @@ function buildList_2(data1) {
 //
 function count(data1){
     // let list = data1;
-    console.log(data1)
+    // console.log(data1)
     let wait_count = data1.map(
         function (index) { return index.Wait; })
     // console.log("Count", wait_count.reduce((a, b) => a + b, 0));
@@ -268,7 +268,7 @@ function getNumberOfDays(start, end) {
 }
 
 function testt(status,data1){
-            console.log("In function",data1)
+            // console.log("In function",data1)
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -278,7 +278,7 @@ function testt(status,data1){
             const week_data = [];
             const month_data = [];
             // console.log(data1.length)
-            for (let i=0;i < data1.length;i++){ //4
+            for (let i=0;i<data1.length;i++){ //4
                 if(getNumberOfDays(data1[i]['lastUpdate'],today)==0){ //0
                         today_data.push(data1[i]);
                         week_data.push(data1[i]);
@@ -304,16 +304,16 @@ function testt(status,data1){
                 let wait_count = 0
                 let app_count = 0
                 let rej_count = 0
-                for(let j=0;j<data1.length;j++){
-                    if(data1[j]['system']==name_label[i]){//data1
-                        if(data1[j]['docStatus'].toLowerCase()=='waitforapprove'){
+                for(let j=0;j<today_data.length;j++){
+                    if(today_data[j]['system']==name_label[i]){//data1
+                        if(today_data[j]['docStatus'].toLowerCase()=='waitforapprove'||data1[j]['docStatus'].toLowerCase()=='waitforinitial'){
                             // console.log(name_label[i])
                             wait_count += 1;
                             // item[name_label[i]]['Wait'] +=1; //0= 0 + 1 
-                        }else if(data1[j]['docStatus'].toLowerCase()=='complete'){
+                        }else if(today_data[j]['docStatus'].toLowerCase()=='complete'){
                             app_count += 1;
                             // item[name_label[i]]['Approved'] +=1;
-                        }else if(data1[j]['docStatus'].toLowerCase()=='cancel'){
+                        }else if(today_data[j]['docStatus'].toLowerCase()=='cancel'){
                             rej_count += 1;
                             // item[name_label[i]]['Reject'] +=1;
                         }

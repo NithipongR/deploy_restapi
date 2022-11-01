@@ -14,9 +14,14 @@
 }
   
 .radio-toolbar input[type="radio"]:checked+label {
-  background-color: #00a8ab !important;
+  background-color: #027779 !important;
   color: #fff;
   border: 1px solid #e0e0e0;
+}
+
+.radio-toolbar label:hover{
+  background-color: #027779;
+  color: #fff;
 }
 
 .radio-toolbar{

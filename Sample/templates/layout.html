@@ -24,26 +24,21 @@
     <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js"></script>
     <!-- add icon link -->
   </head>
-  <body style="background-color: #e5e5e5;">
+  <body style="background-color: #e5e5e5; overflow-y: hidden;">
     
     <!--Start Header-->
-    <!-- <header class="header"> -->
         {% include "./header_BS.html" %}
-        
-        <!-- <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-        </div> -->
-    <!-- </header> -->
     <!--End Header-->
 
     <!--Start Sidebar-->
     <div class="d-flex ">
         {% include "./Sidebar_BS.html"%}
     <!--End Sidebar-->
-    <div class="maincon mx-3 mt-3 bg-white rounded w-100" style="height: calc(100vh - 100px); overflow-x: hidden;">
+    <div class="maincon mx-3 mt-3 bg-white rounded w-100" style="height: calc(100vh - 100px); overflow-x: hidden;" id="maincon">
         {% block body %}{% endblock %}
     </div>
     </div>
+    
     {% block flash_messages %}{% endblock %}
     <!-- <footer id="footer">
         {% block footer%}{% endblock %}

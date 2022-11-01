@@ -21,13 +21,13 @@
     <div class="loading"></div>
     <div class="container-fluid">
         <div class="radio-toolbar ps-0">
-            <input type="radio" id="radio1" onclick="testt()" name="radios" value="all" checked>
+            <input type="radio" id="radio1" onclick="testt(status='today',data)" name="radios" value="all" checked>
             <label for="radio1">Today</label>
 
-            <input type="radio" id="radio2" onclick="testt(status='weekly')" name="radios" value="false">
+            <input type="radio" id="radio2" onclick="testt(status='weekly',data)" name="radios" value="false">
             <label for="radio2">Weekly</label>
 
-            <input type="radio" id="radio3" onclick="testt(status='monthly')" name="radios" value="true">
+            <input type="radio" id="radio3" onclick="testt(status='monthly',data)" name="radios" value="true">
             <label for="radio3">Monthly</label>
         </div>
         <div class="row my-1 ps-21 pb-0">

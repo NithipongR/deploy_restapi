@@ -41,26 +41,6 @@
     </div>
 <script type="text/javascript" src="{% static '/java_scripts/createdatatableStatus_java.js' %}"></script>
 <script>
-    // $( window ).load(function() {buildList() });
-    // buildList();
-    // (() => {
-    //         if (window.localStorage) {
-  
-    //             // If there is no item as 'reload'
-    //             // in localstorage then create one &
-    //             // reload the page
-    //             if (!localStorage.getItem('reload')) {
-    //                 localStorage['reload'] = true;
-    //                 window.location.reload();
-    //             } else {
-  
-    //                 // If there exists a 'reload' item
-    //                 // then clear the 'reload' item in
-    //                 // local storage
-    //                 localStorage.removeItem('reload');
-    //             }
-    //         }
-    //     })(); // Calling anonymous function here only
         var btnContainer = document.getElementById("sidebar");
         var btns = btnContainer.getElementsByClassName("btn");
         btns[0].classList.add("active");
