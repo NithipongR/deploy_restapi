@@ -119,7 +119,7 @@ def get_data(status,empID):
             i['approveUrl'] = i['approveUrl'] or ""
             i['rejectUrl'] = i['rejectUrl'] or ""
             if i['system'] == 'EXP':
-                 i['picturesystem'] = '/static/image/contactlist/e-pro.png'
+                 i['picturesystem'] = '/static/image/contactlist/MyDAS.png'
             if i['docStatus'] == 'WaitForApprove':
                 i['color'] = '#027779' #da5a34
             elif i['docStatus'] == 'WaitForInitial':
